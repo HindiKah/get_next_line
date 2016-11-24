@@ -6,7 +6,7 @@
 /*   By: ybenoit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 11:24:16 by ybenoit           #+#    #+#             */
-/*   Updated: 2016/11/24 16:56:11 by ybenoit          ###   ########.fr       */
+/*   Updated: 2016/11/24 22:57:54 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 int		get_next_line(const int fd, char **line)
 {
-	t_files		*list;
+	static t_files	*list = NULL;
 
-	list = (t_files*)malloc(sizeof(t_files));
-	list = NULL;
-
-	return (0);	
+	*line = NULL;
+	free(*line);
+	ft_putstr("error2\n");
+	ft_search_fd(fd, list);
+	ft_putstr("error1\n");
+	line[0] = ft_put_intostr(fd, line[0]);
+	ft_putstr("error21\n");
+	line[0] = ft_ret_resize(line[0],ft_search_fd(fd, list)); 
+	if (!line)
+		return (0);
+	return (1);
 }
 
 char	*ft_ret_resize(const char *str, t_files *current)
@@ -59,7 +66,9 @@ char	*ft_put_intostr(int fd, char *res)
 
 	i = 0;
 	tmp_res = NULL;
+	ft_putstr("error2\n");
 	res = (char*)malloc(sizeof(char) * 2);
+	ft_putstr("error3\n");
 	while ((ret = read(fd, &buf, BUFF_SIZE)) > 0)
 	{
 		buf[BUFF_SIZE] = '\0';
@@ -71,30 +80,36 @@ char	*ft_put_intostr(int fd, char *res)
 	return (res);
 }
 
-void		ft_add_file(int fd, t_files *list)
+t_files		*ft_add_file(int fd, t_files *list)
 {
 	char *ret;
-	t_files file;
-	
+	t_files *file;
+
 	if (file->myfd == -1)
-		return ;
+		return (NULL);
+	ft_putstr("error3\n");
 	file = (t_files*)malloc(sizeof(t_files));
 	file->myfd = fd;
 	file->nb_backn = 0;
-	file->next = *list;
-	*list = file;
+	file->next = list;
+	list = file;
+	return(file);
 }
 
-t_files		*ft_search_fd(int fd, t_files **list)
+t_files		*ft_search_fd(int fd, t_files *list)
 {
 	t_files *current;
 
-	current = *list;
-	while (current->next != NULL)
-	{
-		if (current->myfd == fd)
-			return (current);
-		current = current->next;
-	}
+	current = (t_files*)malloc(sizeof(t_files));
+	ft_putstr("error30\n");
+	current->next = list;
+	ft_putstr("error35\n");
+		while (current->next != NULL)
+		{
+			ft_putstr("error40\n");
+			if (current->myfd == fd)
+				return (current);
+			current = current->next;
+		}
 	return (ft_add_file(fd, list));
 }
