@@ -6,13 +6,13 @@
 /*   By: ybenoit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 11:24:16 by ybenoit           #+#    #+#             */
-/*   Updated: 2016/11/25 16:51:28 by ybenoit          ###   ########.fr       */
+/*   Updated: 2016/11/25 16:59:25 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static t_files	*list = NULL;
 	t_files			*new;
@@ -27,7 +27,7 @@ int		get_next_line(const int fd, char **line)
 	return (1);
 }
 
-char	*ft_ret_resize(char *str, t_files *current)
+char		*ft_ret_resize(char *str, t_files *current)
 {
 	int		i;
 	int		j;
@@ -36,7 +36,6 @@ char	*ft_ret_resize(char *str, t_files *current)
 
 	t = 0;
 	i = 0;
-	j = 0;
 	while (t != current->nb_backn && str[i])
 	{
 		if (str[i] == '\n')
@@ -57,11 +56,11 @@ char	*ft_ret_resize(char *str, t_files *current)
 	return (NULL);
 }
 
-char	*ft_put_intostr(int fd, char *res)
+char		*ft_put_intostr(int fd, char *res)
 {
 	int		ret;
 	char	buf[BUFF_SIZE + 1];
-	int i;
+	int		i;
 	char	*tmp_res;
 
 	i = 0;
@@ -82,8 +81,8 @@ char	*ft_put_intostr(int fd, char *res)
 
 t_files		*ft_add_file(int fd, t_files **a_list)
 {
-	char *ret;
-	t_files *mfile;
+	char		*ret;
+	t_files		*mfile;
 
 	mfile = (t_files*)malloc(sizeof(t_files));
 	if (!mfile)
@@ -95,12 +94,12 @@ t_files		*ft_add_file(int fd, t_files **a_list)
 	mfile->file = NULL;
 	mfile->next = *a_list;
 	*a_list = mfile;
-	return(mfile);
+	return (mfile);
 }
 
 t_files		*ft_search_fd(int fd, t_files **a_list)
 {
-	t_files *current;
+	t_files		*current;
 
 	if (!*a_list)
 	{
