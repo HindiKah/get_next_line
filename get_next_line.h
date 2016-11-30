@@ -1,31 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ybenoit <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 18:12:07 by ybenoit           #+#    #+#             */
-/*   Updated: 2016/11/25 16:58:35 by ybenoit          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "./libft/libft.h"
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "libft.h"
-# define BUFF_SIZE 2
+# define BUFF_SIZE 32
 
-typedef struct			s_files
+typedef struct	s_gnl
 {
-	int					myfd;
-	int					nb_backn;
-	char				*file;
-	struct s_files		*next;
-}						t_files;
-int						get_next_line(const int fd, char **line);
-char					*ft_ret_resize(char *str, t_files *current);
-char					*ft_put_intostr(int fd, char *ret);
-t_files					*ft_add_file(int fd, t_files **a_list);
-t_files					*ft_search_fd(int fd, t_files **a_list);
+	int			fd;
+	char		*buff;
+}				t_gnl;
+
+t_gnl			*gnl_findorcreate_file(const int fd, t_list **my_list);
+ssize_t			gnl_readoneline(t_gnl *file);
+int				get_next_line(const int fd, char **line);
+
 #endif

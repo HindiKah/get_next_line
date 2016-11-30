@@ -14,11 +14,9 @@
 
 float	ft_powf(float n, float p)
 {
-	float i;
 	float n_cp;
 
 	n_cp = n;
-	i = 0;
 	if (p > 0)
 	{
 		while (p-- > 1)

@@ -14,11 +14,9 @@
 
 double	ft_pow(double n, double p)
 {
-	double	i;
 	double	n_cp;
 
 	n_cp = n;
-	i = 0;
 	if (p > 0)
 	{
 		while (p-- > 1)
