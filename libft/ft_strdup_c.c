@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup_c.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybenoit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 12:47:43 by ybenoit           #+#    #+#             */
-/*   Updated: 2016/11/24 16:23:32 by ybenoit          ###   ########.fr       */
+/*   Created: 2016/11/07 20:37:25 by ybenoit           #+#    #+#             */
+/*   Updated: 2016/11/07 21:42:54 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strdup_c(char *str, char c)
 {
-	int file_d;
-	int i;
 	char *ret;
-	t_files *file;
 
-	ret = NULL;
-	i = 0;
-	if (argc < 2)
-		return (0);
-	file = (t_files*)malloc(sizeof(file_d));
-	file->myfd = open(argv[1], O_RDONLY);
-	if (file->myfd == -1)
-		return (0);
-	file->nb_backn = 0;
-	ret = ft_put_intostr(file->myfd, ret);
-		ft_putstr(ft_ret_resize(ret, file));
-	free(ret);
-	return (0);
+	ret = ft_strndup(str, ft_strlen_c(str, c));
+	return (ret);
 }
