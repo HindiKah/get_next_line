@@ -65,9 +65,9 @@ int					get_next_line(const int fd, char **line)
 	file = gnl_findorcreate_file(fd, &my_list);
 	if ((buff_read = gnl_readoneline(file)) == -1)
 		return (-1);
-	*line = ft_strcdup(file->buff, '\n');
+	*line = ft_strdup_c(file->buff, '\n');
 	temp = file->buff;
-	file->buff = ft_strdup(file->buff + ft_strclen(file->buff, '\n') + 1);
+	file->buff = ft_strdup(file->buff + ft_strlen_c(file->buff, '\n') + 1);
 	free(temp);
 	return (**line || buff_read > 0 ? 1 : 0);
 }
