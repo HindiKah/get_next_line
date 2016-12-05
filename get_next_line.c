@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybenoit <ybenoit@student.42.fr>              +#+  +:+       +#+      */
+/*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/22 09:18:34 by ybenoit            #+#    #+#            */
-/*   Updated: 2016/11/27 10:18:02 by ybenoit           ###   ########         */
+/*   Created: 2016/12/05 19:08:16 by ybenoit           #+#    #+#             */
+/*   Updated: 2016/12/05 19:12:10 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ ssize_t		gnl_readoneline(t_gnl *file)
 	return (size_read);
 }
 
-int					get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static t_list	*my_list;
 	t_gnl			*file;
