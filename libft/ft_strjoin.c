@@ -6,7 +6,7 @@
 /*   By: ybenoit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:06:12 by ybenoit           #+#    #+#             */
-/*   Updated: 2016/11/09 18:34:29 by ybenoit          ###   ########.fr       */
+/*   Updated: 2016/12/06 17:30:30 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[i])
 		ret[j++] = s2[i++];
 	ret[j] = '\0';
+	free((void*)s1);
 	return (ret);
 }
